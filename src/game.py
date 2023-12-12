@@ -10,6 +10,7 @@ class Game:
 
     entities: "list"
 
+    # Constractor 
     def __init__(self):
         self.restart_game()
     
@@ -73,7 +74,7 @@ class Game:
                     self.player.stop_moving()
 
     def update(self, delta):
-        for i in range(len(self.entities) - 1, -1, -1):
+        for i in range(len(self.entities) - 1, -1, -1): # iterative from the back, ending index is -1, decrese by -1 as we go backwards
             obj = self.entities[i]
 
             if obj.expired:
@@ -96,8 +97,9 @@ class Game:
         display.blit(surface, position)
 
     def render(self, display, font):
+        # Clear out 
         display.fill(BLACK)
-
+        # loop through each entity and render it
         if not self.player.expired:
             for obj in self.entities:
                 obj.render(display)
